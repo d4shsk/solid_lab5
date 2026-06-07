@@ -19,9 +19,9 @@ class SmsNotificationSender(NotificationSender):
         print(f"[SMS] Отправка сообщения на {recipient}: {message}")
 
 
-class TelegramNotificationSender(NotificationSender):
+class MessengerNotificationSender(NotificationSender):
     def send(self, recipient: str, message: str) -> None:
-        print(f"[Telegram] Отправка сообщения в чат {recipient}: {message}")
+        print(f"[Messenger] Отправка сообщения в мессенджер {recipient}: {message}")
 
 
 class OrderProcessor:
@@ -43,6 +43,6 @@ if __name__ == "__main__":
     processor_with_sms = OrderProcessor(sms_service)
     processor_with_sms.process_order("12345", "+79991234567")
 
-    telegram_service = TelegramNotificationSender()
-    processor_with_telegram = OrderProcessor(telegram_service)
-    processor_with_telegram.process_order("12345", "@customer_username")
+    messenger_service = MessengerNotificationSender()
+    processor_with_messenger = OrderProcessor(messenger_service)
+    processor_with_messenger.process_order("12345", "customer_profile")
